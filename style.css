@@ -1,0 +1,75 @@
+:root {
+  --p-orange: #f6bd60;
+  --p-white: #f7ede2;
+  --p-pink: #f5cac3;
+  --p-gray: #84a59d;
+  --p-d-pink: #f28482;
+  --d-purple: #8093F1;
+}
+body{
+  margin: 0;
+}
+
+.nav-bar {
+  display:flex;
+  list-style-type: none;
+  gap: 30px;
+}
+.nav-bar li {
+  padding-right: 10px;
+}
+.nav-div {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+}
+nav {
+  background-color: var(--p-orange);
+  padding: 5px 0px;
+}
+.round {
+  border-radius: 100%;
+  overflow: hidden;
+}
+.center-apart {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+}
+.main {
+  width: 400px;
+  height: 400px;
+}
+#banner {
+  background-color: var(--p-pink);
+  padding: 80px 0;
+  position: relative;
+}
+.contained {
+  object-fit: cover;
+  width:100%;
+  height:100%;
+}
+.bubble-img {
+  display:flex;
+}
+.bubble-img div{
+  margin: -30px;
+}
+.intro-main-text {
+  color: var(--d-purple);
+  font-size: 50px;
+  margin: 0;
+  border-bottom: 4px var(--d-purple) solid;
+}
+.intro-sub-text {
+  font-size: 30px;
+  margin: 0;
+  border-top: 4px black solid;
+}
+.nav-bar li a{
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
