@@ -6,8 +6,14 @@
   --p-d-pink: #f28482;
   --d-purple: #8093F1;
 }
+img{
+  width: 300px;
+  height: 300px;
+}
 body{
   margin: 0;
+  background-color: var(--p-white);
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 .nav-bar {
@@ -29,21 +35,23 @@ nav {
 }
 .round {
   border-radius: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 .center-apart {
   display:flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 80px;
+  padding: 0 50px;
 }
 .main {
   width: 400px;
   height: 400px;
 }
+section {
+  padding: 120px 0;
+}
 #banner {
   background-color: var(--p-pink);
-  padding: 80px 0;
   position: relative;
 }
 .contained {
@@ -72,4 +80,53 @@ nav {
   font-size: 20px;
   color: black;
   text-decoration: none;
+}
+#float-carousel {
+  /*background-color: aliceblue;*/
+  padding: 40px 0;
+}
+.text-div {
+  padding: 20px;
+  display: inline-block;
+}
+.crop {
+  overflow:hidden;
+  padding: 50px 0;
+}
+.reel {
+  display:flex;
+  gap: 40px;
+}
+.float-caro-div {
+  border-radius: 15px;
+  /*transition: 30s transform linear;
+  20s slide-left-infinite infinite alternate linear
+
+  */
+}
+
+.float-caro-div:nth-child(even) {
+  animation: 4s bob infinite alternate linear;
+}
+.float-caro-div:nth-child(odd) {
+  animation: 4s bob infinite alternate-reverse linear;
+}
+.slide-anim-img {
+  animation: 20s slide-left-infinite infinite linear;
+}
+@keyframes bob {
+  from {
+    translate: 0 20px;
+  }
+  to {
+    translate: 0 -20px;
+  }
+}
+@keyframes slide-left-infinite {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -1000px 0;
+  }
 }
