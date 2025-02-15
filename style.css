@@ -96,13 +96,8 @@ section {
 }
 .reel {
   display:flex;
-  /*gap: 40px;*/
 }
 .float-caro-div {
-  /*transition: 30s transform linear;
-  20s slide-left-infinite infinite alternate linear
-
-  */
 }
 
 .float-caro-div:nth-child(even) {
@@ -124,4 +119,12 @@ section {
   to {
     translate: 0 -20px;
   }
+}
+@keyframes slide-left-infinite {
+  from {
+    translate: 0 0;
+  }
+  /*to {
+    translate: -1000px 0;
+  }*/
 }
