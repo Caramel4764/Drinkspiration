@@ -104,11 +104,28 @@ section {
 .float-caro-div-odd {
   animation: 4s bob infinite alternate-reverse linear;
   margin-right: 30px;
-
+}
+.vertical-center {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#pause {
+  background-color: var(--p-white);
+  border: var(--d-purple) 4px solid;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 .slide-anim-img {
   object-fit: cover;
   border-radius: 15px;
+}
+.caro-head {
+  display:flex;
 }
 @keyframes bob {
   from {
