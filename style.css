@@ -35,7 +35,6 @@ nav {
 }
 .round {
   border-radius: 100%;
-  /*overflow: hidden;*/
 }
 .center-apart {
   display:flex;
@@ -82,7 +81,6 @@ section {
   text-decoration: none;
 }
 #float-carousel {
-  /*background-color: aliceblue;*/
   padding: 40px 0;
 }
 .text-div {
@@ -91,40 +89,40 @@ section {
 }
 .crop {
   overflow:hidden;
+  display:flex;
   padding: 50px 0;
   height: 280px;
 }
-.reel {
+.crop > * {
   display:flex;
-}
-.float-caro-div {
-}
 
-.float-caro-div:nth-child(even) {
-  animation: 4s bob infinite alternate linear;
 }
-.float-caro-div:nth-child(odd) {
+.float-caro-div-even {
+  animation: 4s bob infinite alternate linear;
+  margin-right: 30px;
+}
+.float-caro-div-odd {
   animation: 4s bob infinite alternate-reverse linear;
+  margin-right: 30px;
+
 }
 .slide-anim-img {
-  position:relative;
-  left: 0;
-  top: 0;
+  object-fit: cover;
   border-radius: 15px;
 }
 @keyframes bob {
   from {
-    translate: 0 20px;
+    translate: 0 10px;
   }
   to {
-    translate: 0 -20px;
+    translate: 0 -10px;
   }
 }
-@keyframes slide-left-infinite {
+@keyframes slide-left {
   from {
     translate: 0 0;
   }
-  /*to {
-    translate: -1000px 0;
-  }*/
+  to {
+    translate: -100% 0;
+  }
 }

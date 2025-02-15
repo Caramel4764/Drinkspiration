@@ -1,12 +1,10 @@
-//const floatCaroImg = document.querySelectorAll('.slide-anim-img');
 const pauseBtn = document.getElementById("pause");
-let floatCaroImg = [];
+const dummyReel = document.querySelector('.dummyReel');
+let floatCaroDivList = [];
 const floatCaroDiv = document.querySelectorAll('.float-caro-div');
 const reel = document.querySelectorAll('.reel')[0];
+let counter = 0;
 let imageReel = [
-  {
-    src:"./img/mint-boba.png",
-  },
   {
     src:"./img/multi-color.jpg",
   },
@@ -21,72 +19,53 @@ let imageReel = [
   },
 ]
 for (let i = 0; i<imageReel.length;i++) {
+  let animDur = (i+1)*5;
+  reel.style.animation = `${animDur}s slide-left linear infinite`
+  dummyReel.style.animation = `${animDur}s slide-left linear infinite`
   let imgDiv = document.createElement('div');
   let caroImg = document.createElement('img');
   caroImg.classList.add('slide-anim-img');
   caroImg.src=imageReel[i].src;
-  caroImg.style.transform=`translate(${i*360}px, 0)`
+  if (counter % 2 == 0) {
+    imgDiv.classList.add('float-caro-div-even')
+  } else {
+    imgDiv.classList.add('float-caro-div-odd')
+  }
+  let dummyImgDiv = imgDiv.cloneNode(true);
+  let dummyCaroImg = caroImg.cloneNode(true);
+  counter++;
+  dummyImgDiv.appendChild(dummyCaroImg)
   imgDiv.appendChild(caroImg);
-  imgDiv.classList.add('float-caro-div');
   reel.appendChild(imgDiv);
-  floatCaroImg.push(caroImg)
+  dummyReel.appendChild(dummyImgDiv)
+  floatCaroDivList.push(imgDiv)
+  floatCaroDivList.push(dummyImgDiv)
 }
 const floatCaro = function(){
   let data = {
     isMoving: true,
   }
-  //return translate x value
-  function calcTransX(element) {
-    const style = window.getComputedStyle(element)
-    const matrix = style.transform;
-    const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
-    return matrixValues[4];
-  }
-  function handleFloat () {
-    if (data.isMoving) {
-      for (let i = 0; i<floatCaroImg.length;i++) {
-        if (calcTransX(floatCaroImg[i]) < (0-300)) {
-          let prev;
-          if (i==0) {
-            prev = calcTransX(floatCaroImg[floatCaroImg.length-1])+360;
-            console.log({
-              floatCaro:floatCaroImg[floatCaroImg.length-1],
-              calcTransX: prev
-            })
-          } else {
-            prev = calcTransX(floatCaroImg[i-1])+360;
-            console.log({
-              floatCaro: floatCaroImg[i-1],
-              calcTransX: prev
-            })
-          }
-          floatCaroImg[i].style.transform=`translate(${prev}px, 0)`;
-        } else {
-          floatCaroImg[i].style.transform=`translate(${calcTransX(floatCaroImg[i])-5}px, 0`;
-        }
-      }
-    }
-  }
   function togglePause () {
     if (data.isMoving == true) {
-      for (let i = 0; i<floatCaroDiv.length;i++) {
-        floatCaroDiv[i].style.animationPlayState = 'paused';
+      reel.style.animationPlayState = 'paused';
+      dummyReel.style.animationPlayState = 'paused';
+      for (let i = 0; i<floatCaroDivList.length; i++) {
+        floatCaroDivList[i].style.animationPlayState = 'paused';
       }
       data.isMoving = false;
     } else {
-      for (let i = 0; i<floatCaroDiv.length;i++) {
-        floatCaroDiv[i].style.animationPlayState = 'running';
+      reel.style.animationPlayState = 'running';
+      dummyReel.style.animationPlayState = 'running';
+      for (let i = 0; i<floatCaroDivList.length; i++) {
+        floatCaroDivList[i].style.animationPlayState = 'running';
       }
       data.isMoving = true;
     }
   }
-  return {handleFloat, togglePause}
+  return {togglePause}
 }()
 
 pauseBtn.addEventListener('click', function() {
   floatCaro.togglePause();
 })
-setInterval(function(){
-  floatCaro.handleFloat();
-}, 1500)
 
