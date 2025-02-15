@@ -92,13 +92,13 @@ section {
 .crop {
   overflow:hidden;
   padding: 50px 0;
+  height: 280px;
 }
 .reel {
   display:flex;
-  gap: 40px;
+  /*gap: 40px;*/
 }
 .float-caro-div {
-  border-radius: 15px;
   /*transition: 30s transform linear;
   20s slide-left-infinite infinite alternate linear
 
@@ -112,7 +112,10 @@ section {
   animation: 4s bob infinite alternate-reverse linear;
 }
 .slide-anim-img {
-  animation: 20s slide-left-infinite infinite linear;
+  position:relative;
+  left: 0;
+  top: 0;
+  border-radius: 15px;
 }
 @keyframes bob {
   from {
@@ -120,13 +123,5 @@ section {
   }
   to {
     translate: 0 -20px;
-  }
-}
-@keyframes slide-left-infinite {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: -1000px 0;
   }
 }

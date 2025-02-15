@@ -1,7 +1,10 @@
-const floatCaroImg = document.querySelectorAll('.float-caro-img');
+const floatCaroImg = document.querySelectorAll('.slide-anim-img');
 const pauseBtn = document.getElementById("pause");
+const floatCaroDiv = document.querySelectorAll('.float-caro-div');
 
-
+for (let i = 0; i<floatCaroImg.length;i++) {
+  floatCaroImg[i].style.left=`${i*360}px`
+}
 const floatCaro = function(){
   let data = {
     isMoving: true,
@@ -9,26 +12,29 @@ const floatCaro = function(){
   function handleFloat () {
     if (data.isMoving) {
       for (let i = 0; i<floatCaroImg.length;i++) {
-        if (floatCaroImg[i].x < 0-300) {
-          floatCaroImg[i].x = window.screen.width;
+        if (parseInt(floatCaroImg[i].style.left,10) < (0-300)) {
+          let prev;
+          if (i==0) {
+            prev = parseInt(floatCaroImg[floatCaroImg.length-1].style.left,10)+360;
+          } else {
+            prev = parseInt(floatCaroImg[i-1].style.left,10)+360;
+          }
+          floatCaroImg[i].style.left=`${prev}px`;
         } else {
-          //window.screen.width
-          console.log(floatCaroImg[i].x)
-          floatCaroImg[i].style.transform=`translate(-${window.screen.width}px, 0px)`;
-          //${floatCaroImg.x}
+          floatCaroImg[i].style.left=`${parseInt(floatCaroImg[i].style.left, 10)-1}px`;
         }
       }
     }
   }
   function togglePause () {
     if (data.isMoving == true) {
-      for (let i = 0; i<floatCaroImg.length;i++) {
-        floatCaroImg[i].style.animationPlayState = 'paused';
+      for (let i = 0; i<floatCaroDiv.length;i++) {
+        floatCaroDiv[i].style.animationPlayState = 'paused';
       }
       data.isMoving = false;
     } else {
-      for (let i = 0; i<floatCaroImg.length;i++) {
-        floatCaroImg[i].style.animationPlayState = 'running';
+      for (let i = 0; i<floatCaroDiv.length;i++) {
+        floatCaroDiv[i].style.animationPlayState = 'running';
       }
       data.isMoving = true;
     }
@@ -40,6 +46,6 @@ pauseBtn.addEventListener('click', function() {
   floatCaro.togglePause();
 })
 setInterval(function(){
-  //floatCaro.handleFloat();
-}, 1000)
+  floatCaro.handleFloat();
+}, 15)
 
