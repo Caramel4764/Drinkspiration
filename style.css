@@ -20,14 +20,41 @@ body{
   display:flex;
   list-style-type: none;
   gap: 30px;
+  margin: 0;
+  padding:0;
 }
-.nav-bar li {
-  padding-right: 10px;
+.nav-bar a{
+  display:block;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  z-index:0;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+.nav-bar a li{
+  display:block;
+}
+.navbar-select {
+  width: 100px;
+  border-radius: 10px;
+  background-color:var(--p-d-pink);
+  display:block;
+  height: 50px;
+  position: absolute;
+  transition: 0.5s transform;
 }
 .nav-div {
   display:flex;
   align-items: center;
   flex-direction: column;
+}
+.navbar-div {
+  padding: 20px 0 10px 0;
+  position: relative;
 }
 nav {
   background-color: var(--p-orange);
@@ -75,11 +102,7 @@ section {
   margin: 0;
   border-top: 4px black solid;
 }
-.nav-bar li a{
-  font-size: 20px;
-  color: black;
-  text-decoration: none;
-}
+
 #float-carousel {
   padding: 40px 0;
 }

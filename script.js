@@ -3,6 +3,8 @@ const dummyReel = document.querySelector('.dummyReel');
 let floatCaroDivList = [];
 const floatCaroDiv = document.querySelectorAll('.float-caro-div');
 const reel = document.querySelectorAll('.reel')[0];
+const navbarSelect = document.querySelectorAll('.navbar-select')[0];
+const navLink = document.querySelectorAll('.nav-link');
 let counter = 0;
 let imageReel = [
   {
@@ -45,7 +47,8 @@ const floatCaro = function(){
   let data = {
     isMoving: true,
   }
-  function togglePause () {
+  
+  function togglePause (wanted) {
     if (data.isMoving == true) {
       reel.style.animationPlayState = 'paused';
       dummyReel.style.animationPlayState = 'paused';
@@ -69,3 +72,8 @@ pauseBtn.addEventListener('click', function() {
   floatCaro.togglePause();
 })
 
+for (let i = 0; i<navLink.length; i++) {
+  navLink[i].addEventListener('mouseenter', function() {
+    navbarSelect.style.transform=`translate(${130*i}px, 0)`;
+  })
+}
